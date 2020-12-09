@@ -12,12 +12,10 @@ import 'features/bitcoin_tracker/domain/repositories/bitcoin_tracker_repository.
 import 'features/bitcoin_tracker/domain/usecases/get_bitcoin_info.dart';
 import 'features/bitcoin_tracker/presentation/bloc/bitcoin_tracker_bloc.dart';
 
-final GetIt sl = GetIt.instance;
+final GetIt sl = GetIt.I;
 
 Future<void> init() async {
-  sl.registerFactory(
-    () => BitcoinTrackerBloc(info: sl()),
-  );
+  sl.registerFactory(() => BitcoinTrackerBloc(info: sl()));
 
   sl.registerLazySingleton(() => GetBitcoinInfo(sl()));
 
