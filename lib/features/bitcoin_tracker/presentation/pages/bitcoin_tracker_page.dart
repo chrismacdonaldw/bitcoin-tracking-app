@@ -1,4 +1,5 @@
 import 'package:bitcoin_tracking_app/features/bitcoin_tracker/presentation/bloc/bloc.dart';
+import 'package:bitcoin_tracking_app/features/bitcoin_tracker/presentation/widgets/info_card.dart';
 import 'package:bitcoin_tracking_app/features/bitcoin_tracker/presentation/widgets/refresh_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +35,7 @@ class BitcoinTrackerPage extends StatelessWidget {
                   } else if (state is Loading) {
                     return const CircularProgressIndicator();
                   } else if (state is Loaded) {
-                    return Text('${state.bitcoinTracker.priceUSD}');
+                    return InfoCard(info: state.bitcoinTracker);
                   } else if (state is Error) {
                     return Text(state.message);
                   } else {
